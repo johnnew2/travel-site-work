@@ -3,6 +3,7 @@
   position: absolute;
   width: 100%;
   z-index: 2;
+  -webkit-transition: background-color .3s ease-out;
   transition: background-color .3s ease-out;
 
   &--is-expanded {
@@ -10,7 +11,12 @@
   }
   
   @mixin atMedium {
+      position: fixed;
     background-color: rgba($mainBlue, .3);
+      
+      &--dark {
+          background-color: rgba(23, 51, 72, .85);
+      }
   }
 
   &__btn-container {
@@ -23,14 +29,26 @@
     position: absolute;
     top: 0;
     left: 50%;
+    -webkit-transform: translateX(-50%) scale(.8);
+      -webkit-transition: -webkit-transform .3s ease-out;
+      transition: -webkit-transform .3s ease-out;
+      transition: transform .3s ease-out;
+      transition: transform .3s ease-out, -webkit-transform .3s ease-out;
     transform: translateX(-50%) scale(.8);
+    -webkit-transform-origin: 50% 0;
     transform-origin: 50% 0;
     background-color: $mainBlue;
     padding: 25px 36px;
 
     @mixin atMedium {
-      left: auto;
-      transform: translateX(0);
+        left: auto;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+
+        .site-header--dark & {
+            -webkit-transform: scale(0.75);
+            transform: scale(0.57);
+        }
     }
   }
 
@@ -54,8 +72,12 @@
       width: 20px;
       height: 3px;
       background-color: #FFF;
+      -webkit-transform-origin: 0 0;
       transform-origin: 0 0;
+      -webkit-transition: -webkit-transform .3s ease-out;
+      transition: -webkit-transform .3s ease-out;
       transition: transform .3s ease-out;
+      transition: transform .3s ease-out, -webkit-transform .3s ease-out;
     }
 
     &__middle {
@@ -65,7 +87,9 @@
       width: 20px;
       height: 3px;
       background-color: #FFF;
+      -webkit-transition: all .3s ease-out;
       transition: all .3s ease-out;
+      -webkit-transform-origin: 0 50%;
       transform-origin: 0 50%;
     }
 
@@ -77,8 +101,12 @@
       width: 20px;
       height: 3px;
       background-color: #FFF;
+      -webkit-transform-origin: 0 100%;
       transform-origin: 0 100%;
+      -webkit-transition: -webkit-transform .3s ease-out;
+      transition: -webkit-transform .3s ease-out;
       transition: transform .3s ease-out;
+      transition: transform .3s ease-out, -webkit-transform .3s ease-out;
     }
 
     @mixin atMedium {
@@ -88,22 +116,27 @@
 
   &__menu-icon--close-x {
     &::before {
+      -webkit-transform: rotate(45deg) scaleX(1.25);
       transform: rotate(45deg) scaleX(1.25);
     }
 
     .site-header__menu-icon__middle {
       opacity: 0;
+      -webkit-transform: scaleX(0);
       transform: scaleX(0);
     }
 
     &::after {
+      -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
       transform: rotate(-45deg) scaleX(1.25) translateY(1px);
     }
   }
 
   &__menu-content {
     opacity: 0;
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
+    -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
     position: relative;
     z-index: -10;
@@ -114,12 +147,14 @@
       opacity: 1;
       z-index: 1;
       padding-top: 0;
+      -webkit-transform: scale(1);
       transform: scale(1);
     }
 
     &--is-visible {
       opacity: 1;
       z-index: 1;
+      -webkit-transform: scale(1);
       transform: scale(1);
     }
   }
