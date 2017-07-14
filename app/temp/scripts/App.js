@@ -10848,8 +10848,8 @@
 	                            that.headerLinks.removeClass("is-current-link");
 	                            (0, _jquery2.default)(matchingHeaderLink).addClass("is-current-link");
 	                        }
-	                    },
-	                    offset: "-40%"
+	                    }
+	                    //               offset: "-20%"
 	                });
 	            });
 	        }
